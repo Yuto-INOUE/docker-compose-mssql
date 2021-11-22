@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  mssql:
+    build:
+      context: ./docker/mssqlserver/
+    image: mssql
+    ports:
+      - 1433:1433
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=56CFUVzh
+      - MSSQL_PID=Express
+      - MSSQL_LCID=1041
+      - MSSQL_COLLATION=Japanese_CI_AS
+      - DB_NAME=develop
+    volumes:
+      - ./docker/mssqlserver/initdb.d:/docker-entrypoint-initdb.d
+      - ./docker/mssqlserver/data:/var/opt/mssql/data
+      - ./docker/mssqlserver/log:/var/opt/mssql/log
+      - ./docker/mssqlserver/secrets:/var/opt/mssql/sec

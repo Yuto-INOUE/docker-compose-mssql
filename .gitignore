@@ -1,0 +1,5 @@
+docker/mssqlserver/log/*
+!docker/mssqlserver/log/.gitkeep
+
+*.mdf
+*.ldf
